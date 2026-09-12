@@ -1,5 +1,5 @@
 [build]
-  publish = "."
+ publish = "swachhlenss-app-main"
   # No build command — the frontend is plain HTML/CSS/JS with no build step.
 
 # SPA-style redirects — specific routes FIRST, catch-all LAST
