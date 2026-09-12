@@ -1,5 +1,0 @@
-[build]
-  publish = "swachhlenss-app-main/swachhlenss-app-main"
-
-[context.production.environment]
-  NODE_VERSION = "18"
