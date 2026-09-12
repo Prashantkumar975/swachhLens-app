@@ -1,14 +1,6 @@
 [build]
-  publish = "."
-  # No build command — the frontend is plain HTML/CSS/JS with no build step.
+  publish = "swachhlenss-app-main/swachhlenss-app-main"
 
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-  conditions = {Role = ["admin"]}
-
-# SPA-style fallback: serve index.html for unknown routes
 [[redirects]]
   from = "/login"
   to = "/login.html"
@@ -69,16 +61,19 @@
   to = "/api-docs.html"
   status = 200
 
-# Redirect /forgot-password to forgot-password.html
 [[redirects]]
   from = "/forgot-password"
   to = "/forgot-password.html"
   status = 200
 
-# Redirect /admin-login to admin-login.html
 [[redirects]]
   from = "/admin-login"
   to = "/admin-login.html"
+  status = 200
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
   status = 200
 
 [context.production.environment]
