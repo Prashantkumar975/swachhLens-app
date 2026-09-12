@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sign in — SwachhLens</title>
+<meta name="description" content="Sign in to SwachhLens as a Citizen or a Cleaning-crew Employee. Report waste, work your zone, and watch cleanups get verified." />
+<link rel="stylesheet" href="css/landing.css" />
+<link rel="stylesheet" href="css/i18n.css" />
+<script>document.documentElement.classList.add('js');</script>
+</head>
+<body class="auth-page" data-auth-mode="login">
+<a class="lv-skip" href="#authMain" data-i18n="nav.skip">Skip to content</a>
+
+<!-- ================= NAVIGATION ================= -->
+<nav class="lv-nav is-scrolled" aria-label="Main navigation">
+  <div class="lv-wrap lv-nav__inner">
+    <a href="index.html" class="lv-logo">
+      <span class="lv-logo__mark" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"> <!-- Person --> <circle cx="7" cy="4" r="2"/> <path d="M7 6v5"/> <path d="M7 11l-2.5 4"/> <path d="M7 11l2.5 4"/> <path d="M7 8.5l4-2"/> <!-- Garbage particles --> <circle cx="12" cy="5" r="0.7" fill="#fff" stroke="none"/> <circle cx="13.2" cy="6.5" r="0.5" fill="#fff" stroke="none"/> <!-- Dustbin --> <path d="M14 9h6v11a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 14 20V9z"/> <path d="M13.5 9h7"/> <path d="M16 6v3"/> </svg> </span><span>SwachhLens</span>
+    </a>
+    <div class="lv-nav__cta">
+      <span data-lang-switch></span>
+      <button class="lv-btn lv-btn--ghost lv-btn--sm" data-theme-btn title="Toggle light / dark mode" style="padding:10px 14px;">🌙</button>
+      <a class="lv-btn lv-btn--ghost lv-btn--sm" href="admin-login.html" data-i18n="auth.agencyLogin">Agency Login</a>
+      <a class="lv-btn lv-btn--ghost lv-btn--sm" href="index.html" data-i18n="nav.backHome">← Back to home</a>
+    </div>
+  </div>
+</nav>
+
+<main class="lv-auth" id="authMain">
+  <div class="lv-auth__wrap">
+    <div class="lv-auth__head">
+      <span class="lv-kicker" data-i18n="auth.kicker">One platform · Citizen access</span>
+      <h1 class="lv-display lv-display--md"><span data-i18n="auth.title1">Welcome back.</span> <span class="lv-em" data-i18n="auth.loginEm">Sign in as a Citizen.</span></h1>
+      <p class="lv-lead" data-i18n="auth.lead1">Your dashboard will adapt to your workflow and guide you through sign-in.</p>
+      <p style="margin-top:.5rem;font-size:.85rem;opacity:.6;"><span data-i18n="auth.agencyStaff">Agency staff (Admin/Employee) →</span> <a href="admin-login.html" style="color:#8b5cf6;" data-i18n="auth.agencyLogin">Agency Login</a></p>
+    </div>
+
+    <!-- ================= CITIZEN PANEL ================= -->
+    <section class="lv-auth__panel" data-role-panel="USER" aria-labelledby="citizenTitle">
+      <div class="lv-auth__side lv-auth__side--citizen">
+        <span class="side-role" data-i18n="auth.roleCit">Citizen</span>
+        <h2 id="citizenTitle" data-i18n="auth.citTitle">See waste. Report it.<br>Watch it disappear.</h2>
+        <p data-i18n="auth.citBody">Your reports and pickups get a real owner — the crew that clears them and the verification that proves it.</p>
+        <ul class="side-list">
+          <li><span>📸</span> <span data-i18n="auth.citList1">Report garbage with a photo and a pin</span></li>
+          <li><span>📊</span> <span data-i18n="auth.citList2Reg">AI classifies waste and severity from your image</span></li>
+          <li><span>🔄</span> <span data-i18n="auth.citList3">Track Pending → In Progress → Verification → Resolved</span></li>
+          <li><span>✅</span> <span data-i18n="auth.citList4">Confirm cleanups and earn community points</span></li>
+        </ul>
+        <div class="side-meta" data-i18n="auth.citMetaLogin">Signing in routes you to the Citizen dashboard.</div>
+      </div>
+      <div class="lv-auth__form">
+        <h3 data-i18n="auth.citAccess">Citizen access</h3>
+        <p data-i18n="auth.citFormLeadLogin">Log in to report, book and track.</p>
+        <form data-form novalidate>
+          <div class="lv-field">
+            <label for="citizenEmail" data-i18n="auth.emailOrUser">Email or Username</label>
+            <input data-email id="citizenEmail" type="text" placeholder="email or username" data-i18n-ph="auth.phEmailOrUser" autocomplete="username" />
+          </div>
+          <div class="lv-field">
+            <label for="citizenPass" data-i18n="auth.pass">Password</label>
+            <input data-pass id="citizenPass" type="password" placeholder="••••••••" autocomplete="current-password" />
+          </div>
+          <div class="lv-auth__err" data-err role="alert"></div>
+          <button class="lv-auth__submit lv-auth__submit--citizen" type="submit" data-submit>
+            <span class="lv-spinner"></span><span data-submit-label data-i18n="auth.logCit">Log in as Citizen</span><span class="lv-arr">→</span>
+          </button>
+        </form>
+        <p style="text-align:center;margin:.75rem 0;"><a href="forgot-password.html" style="color:#22c55e;font-size:.875rem;" data-i18n="auth.forgotPass">Forgot password?</a></p>
+        <p class="lv-auth__switch"><span data-i18n="auth.switchRegQ">Don't have an account?</span> <a href="register.html" data-role-link="register" data-i18n="auth.switchRegLink">Register</a></p>
+      </div>
+    </section>
+
+
+  </div>
+</main>
+
+<div class="toast" id="toast"></div>
+
+<script src="js/lang.js"></script>
+<script src="js/config.js"></script>
+<script src="js/api.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/login.js"></script>
+</body>
+</html>

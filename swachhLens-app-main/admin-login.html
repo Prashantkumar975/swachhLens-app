@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Admin / Employee Login — SwachhLens</title>
+<meta name="description" content="Sign in to SwachhLens as an Admin or Employee using your agency-issued ID." />
+<link rel="stylesheet" href="css/landing.css" />
+<link rel="stylesheet" href="css/i18n.css" />
+<script>document.documentElement.classList.add('js');</script>
+</head>
+<body class="auth-page">
+<a class="lv-skip" href="#authMain" data-i18n="nav.skip">Skip to content</a>
+
+<!-- ================= NAVIGATION ================= -->
+<nav class="lv-nav is-scrolled" aria-label="Main navigation">
+  <div class="lv-wrap lv-nav__inner">
+    <a href="index.html" class="lv-logo">
+      <span class="lv-logo__mark" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"> <!-- Person --> <circle cx="7" cy="4" r="2"/> <path d="M7 6v5"/> <path d="M7 11l-2.5 4"/> <path d="M7 11l2.5 4"/> <path d="M7 8.5l4-2"/> <!-- Garbage particles --> <circle cx="12" cy="5" r="0.7" fill="#fff" stroke="none"/> <circle cx="13.2" cy="6.5" r="0.5" fill="#fff" stroke="none"/> <!-- Dustbin --> <path d="M14 9h6v11a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 14 20V9z"/> <path d="M13.5 9h7"/> <path d="M16 6v3"/> </svg> </span><span>SwachhLens</span>
+    </a>
+    <div class="lv-nav__cta">
+      <span data-lang-switch></span>
+      <button class="lv-btn lv-btn--ghost lv-btn--sm" data-theme-btn title="Toggle light / dark mode" style="padding:10px 14px;" data-i18n-title="nav.theme">🌙</button>
+      <a class="lv-btn lv-btn--ghost lv-btn--sm" href="login.html" data-i18n="adm.citizenLogin">Citizen Login</a>
+      <a class="lv-btn lv-btn--ghost lv-btn--sm" href="index.html" data-i18n="nav.backHome">← Back to home</a>
+    </div>
+  </div>
+</nav>
+
+<main class="lv-auth" id="authMain">
+  <div class="lv-auth__wrap">
+    <div class="lv-auth__head">
+      <span class="lv-kicker" data-i18n="adm.kicker">One platform · Agency access</span>
+      <h1 class="lv-display lv-display--md"><span data-i18n="adm.hello">Welcome back.</span> <span class="lv-em" data-i18n="adm.helloEm">Sign in with your ID.</span></h1>
+      <p class="lv-lead" data-i18n="adm.lead">Your dashboard will adapt to your role — Admin or Employee.</p>
+    </div>
+
+    <!-- ================= ROLE SELECTOR ================= -->
+    <div class="lv-auth__selector" role="tablist" aria-label="Choose a role" data-role-selector>
+      <button class="lv-auth__role lv-auth__role--citizen is-active" role="tab" aria-selected="true" data-role="admin">
+        <span><b data-i18n="adm.adminRole">Admin</b><small data-i18n="adm.adminRoleSub">Create · Assign · Track</small></span>
+      </button>
+      <button class="lv-auth__role lv-auth__role--employee" role="tab" aria-selected="false" data-role="employee">
+        <span><b data-i18n="adm.empRole">Employee</b><small data-i18n="adm.empRoleSub">Accept · Reject · Work</small></span>
+      </button>
+    </div>
+
+    <!-- ================= ADMIN PANEL ================= -->
+    <section class="lv-auth__panel" data-role-panel="admin" aria-labelledby="adminTitle">
+      <div class="lv-auth__side lv-auth__side--employee">
+        <span class="side-role" data-i18n="adm.sideRole">Admin · Manager</span>
+        <h2 id="adminTitle" data-i18n="adm.sideTitle">Assign tasks.<br>Track progress.</h2>
+        <p data-i18n="adm.sideBody">Manage your workforce, assign citizen reports to the right employee, and monitor task completion across your agency.</p>
+        <ul class="side-list">
+          <li data-i18n="adm.sideL1">📋 View citizen waste reports in real-time</li>
+          <li data-i18n="adm.sideL2">👤 Assign reports to any employee by ID</li>
+          <li data-i18n="adm.sideL3">📊 Track pending, accepted, and rejected tasks</li>
+          <li data-i18n="adm.sideL4">🔄 Reassign tasks if needed</li>
+        </ul>
+        <div class="side-meta" data-i18n="adm.sideMeta">Signing in routes you to the Admin dashboard.</div>
+      </div>
+      <div class="lv-auth__form">
+        <h3 data-i18n="adm.formTitle">Admin access</h3>
+        <p data-i18n="adm.formLead">Sign in with your Admin ID and password.</p>
+        <form id="adminForm" data-form novalidate>
+          <div class="lv-field">
+            <label for="adminIdInput" data-i18n="adm.idLbl">Admin ID</label>
+            <input id="adminIdInput" type="text" placeholder="Your admin ID" autocomplete="username" required data-i18n-ph="adm.idPh" />
+          </div>
+          <div class="lv-field">
+            <label for="adminPassInput" data-i18n="auth.pass">Password</label>
+            <input id="adminPassInput" type="password" placeholder="••••••••" autocomplete="current-password" required />
+          </div>
+          <div class="lv-auth__err" id="adminErr" role="alert"></div>
+          <button class="lv-auth__submit lv-auth__submit--employee" type="submit" id="adminSubmit">
+            <span class="lv-spinner"></span><span id="adminSubmitLabel" data-i18n="adm.submit">Log in as Admin</span><span class="lv-arr">→</span>
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <!-- ================= EMPLOYEE PANEL ================= -->
+    <section class="lv-auth__panel" data-role-panel="employee" aria-labelledby="employeeTitle" hidden>
+      <div class="lv-auth__side lv-auth__side--employee">
+        <span class="side-role" data-i18n="adm.empSideRole">Employee · Cleaning Crew</span>
+        <h2 id="employeeTitle" data-i18n="adm.empSideTitle">See your tasks.<br>Accept or reject.</h2>
+        <p data-i18n="adm.empSideBody">View tasks assigned to you by admins — citizen waste reports and custom work orders. Accept the ones you can handle.</p>
+        <ul class="side-list">
+          <li data-i18n="adm.empSideL1">🔑 Log in with the Employee ID your admin created</li>
+          <li data-i18n="adm.empSideL2">📋 View tasks assigned to your ID</li>
+          <li data-i18n="adm.empSideL3">✅ Accept or reject each task</li>
+          <li data-i18n="adm.empSideL4">📍 See location, severity, and reporter info</li>
+        </ul>
+        <div class="side-meta" data-i18n="adm.empSideMeta">Only admins can create employee accounts.</div>
+      </div>
+      <div class="lv-auth__form">
+        <h3 data-i18n="adm.empFormTitle">Employee access</h3>
+        <p data-i18n="adm.empFormLead">Sign in with your Employee ID and password.</p>
+        <form id="employeeForm" data-form novalidate>
+          <div class="lv-field">
+            <label for="empIdInput" data-i18n="adm.empIdLbl">Employee ID</label>
+            <input id="empIdInput" type="text" placeholder="Employee ID" autocomplete="username" required />
+          </div>
+          <div class="lv-field">
+            <label for="empPassInput" data-i18n="auth.pass">Password</label>
+            <input id="empPassInput" type="password" placeholder="••••••••" autocomplete="current-password" required />
+          </div>
+          <div class="lv-auth__err" id="empErr" role="alert"></div>
+          <button class="lv-auth__submit lv-auth__submit--employee" type="submit" id="empSubmit">
+            <span class="lv-spinner"></span><span id="empSubmitLabel" data-i18n="adm.empSubmit">Log in as Employee</span><span class="lv-arr">→</span>
+          </button>
+        </form>
+        <p style="text-align:center;margin-top:12px;"><a href="forgot-password.html?role=employee" style="color:var(--green-400);font-size:14px;">Forgot your password?</a></p>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<div class="toast" id="toast"></div>
+
+<script src="js/lang.js"></script>
+<script src="js/config.js"></script>
+<script src="js/api.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/admin-login.js"></script>
+</body>
+</html>

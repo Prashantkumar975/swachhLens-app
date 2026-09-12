@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Employee Dashboard — SwachhLens</title>
+<link rel="stylesheet" href="css/landing.css" />
+<link rel="stylesheet" href="css/i18n.css" />
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+<body class="app-page">
+<header class="app-header">
+  <div class="app-nav">
+    <a href="index.html" class="logo">
+      <span class="logo-badge"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="4" r="2"/><path d="M7 6v5"/><path d="M7 11l-2.5 4"/><path d="M7 11l2.5 4"/><path d="M7 8.5l4-2"/><circle cx="12" cy="5" r="0.7" fill="#fff" stroke="none"/><circle cx="13.2" cy="6.5" r="0.5" fill="#fff" stroke="none"/><path d="M14 9h6v11a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 14 20V9z"/><path d="M13.5 9h7"/><path d="M16 6v3"/></svg></span><span>SwachhLens</span>
+    </a>
+    <div class="nav-user">
+      <div class="nu-wrap" style="text-align:right;">
+        <div class="nu-name" id="eName">Employee</div>
+        <div class="nu-role" id="eRole">Employee</div>
+      </div>
+      <div class="mini-avatar" id="eAvatar" style="background:linear-gradient(135deg,#8b5cf6,#6366f1);">E</div>
+      <span data-lang-switch></span>
+      <button class="icon-btn" data-theme-btn title="Toggle dark mode">🌙</button>
+      <button class="icon-btn" onclick="Auth.switchRole()" title="Logout / switch role">⏻</button>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="app-hero">
+  <div class="wrap">
+    <span class="eyebrow"><span class="dot"></span> <span data-i18n="emp.kicker">Employee Dashboard</span></span>
+    <h1><span data-i18n="dash.hello">Hello,</span> <span class="grad" id="greetName">Employee</span></h1>
+    <p id="empBlurb" data-i18n="emtask.lead">View tasks assigned to you by admins — citizen waste reports and custom work orders. Accept or reject each task based on your availability.</p>
+    <div class="hero-actions">
+      <button class="btn btn-primary" onclick="location.reload()" data-i18n="emp.refresh">Refresh</button>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="wrap">
+  <div class="stats-banner">
+    <div class="stat-card reveal in">
+      <div class="sc-ico c-amber">📋</div>
+      <div>
+        <div class="sc-num" id="statAssigned">0</div>
+        <div class="sc-lbl" data-i18n="emp.statAssigned">📋 Assigned to Me</div>
+      </div>
+    </div>
+    <div class="stat-card reveal in">
+      <div class="sc-ico c-blue">🔧</div>
+      <div>
+        <div class="sc-num" id="statActive">0</div>
+        <div class="sc-lbl" data-i18n="emp.statActive">🔧 In Progress</div>
+      </div>
+    </div>
+    <div class="stat-card reveal in">
+      <div class="sc-ico c-violet">🔍</div>
+      <div>
+        <div class="sc-num" id="statVerify">0</div>
+        <div class="sc-lbl" data-i18n="emp.statVerify">🔍 Verification</div>
+      </div>
+    </div>
+    <div class="stat-card reveal in">
+      <div class="sc-ico c-green">✅</div>
+      <div>
+        <div class="sc-num" id="statResolved">0</div>
+        <div class="sc-lbl" data-i18n="emp.statResolved">✅ Resolved</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ASSIGNED TASKS (awaiting acceptance) -->
+<section class="app-section" id="assignedSection">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <span class="kicker" data-i18n="emp.assignedKicker">📥 New Assignments</span>
+        <h2 data-i18n="emp.assignedTitle">Awaiting Your Acceptance</h2>
+        <p data-i18n="emp.assignedSub">Tasks the lead has dispatched to you. Accept to start working, or reject if you can't handle them right now.</p>
+      </div>
+    </div>
+    <div class="reports-grid" id="assignedGrid"></div>
+  </div>
+</section>
+
+<!-- ROUTE MAP (assigned work plotted on an interactive map) -->
+<section class="app-section" id="routeMapSection" style="background:var(--card); border-block:1px solid var(--line);">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <span class="kicker" data-i18n="emp.mapKicker">🗺️ My Route</span>
+        <h2 data-i18n="emp.mapTitle">Assigned Work Map</h2>
+        <p data-i18n="emp.mapSub">Every complaint assigned to you, plotted with its exact location. Tap a pin for details — the route is optimized to cover all pins efficiently.</p>
+      </div>
+    </div>
+    <div class="route-summary" id="routeSummary" hidden>
+      <span class="rs-chip" id="rsStops">📍 0 stops</span>
+      <span class="rs-chip" id="rsDist">🛣️ —</span>
+      <span class="rs-chip rs-note" id="rsNote"></span>
+    </div>
+    <div class="route-map" id="routeMap" aria-label="Map of assigned complaints"></div>
+    <div class="map-legend" id="mapLegend" hidden>
+      <span class="lg-item lg-assigned"><i></i><span data-i18n="emp.mapLgAssigned">Assigned</span></span>
+      <span class="lg-item lg-progress"><i></i><span data-i18n="emp.mapLgProgress">In progress</span></span>
+      <span class="lg-item lg-route"><i></i><span data-i18n="emp.mapLgRoute">Optimized route</span></span>
+    </div>
+  </div>
+</section>
+
+<!-- ACTIVE TASKS (in progress / verification) -->
+<section class="app-section" id="tasksSection">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <span class="kicker" data-i18n="emp.activeKicker">🔧 Active Work</span>
+        <h2 data-i18n="emp.activeTitle">In Progress & Verification</h2>
+        <p data-i18n="emp.activeSub">Tasks you're currently working on, or that are awaiting group lead verification.</p>
+      </div>
+    </div>
+    <div class="reports-grid" id="taskGrid"></div>
+  </div>
+</section>
+
+<!-- LEAD DISPATCH (only visible to group leads) -->
+<section class="app-section" id="leadDispatch" hidden style="background:var(--card); border-block:1px solid var(--line);">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <span class="kicker" data-i18n="emp.leadKicker">🤖 AI Dispatch Queue</span>
+        <h2 data-i18n="emp.leadTitle">Approve or Override AI Suggestions</h2>
+        <p data-i18n="emp.leadSub">New reports in your zone that need a crew member assigned. The AI suggests the best match — approve it or pick someone else.</p>
+      </div>
+    </div>
+    <div id="leadDispatchGrid"></div>
+  </div>
+</section>
+
+<!-- LEAD VERIFICATION (only visible to group leads) -->
+<section class="app-section" id="leadVerification" hidden>
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <span class="kicker" style="color:var(--purple-500);" data-i18n="emp.verifyKicker">🔍 Verification Queue</span>
+        <h2 data-i18n="emp.verifyTitle">Review Completed Work</h2>
+        <p data-i18n="emp.verifySub">Crew members mark work as collected — verify the proof and confirm completion or send back for rework.</p>
+      </div>
+    </div>
+    <div id="leadVerifyGrid"></div>
+  </div>
+</section>
+
+<!-- DONE -->
+<section class="app-section" style="background:var(--card); border-block:1px solid var(--line);">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <span class="kicker" data-i18n="emp.doneKicker">✅ Completed</span>
+        <h2 data-i18n="emp.doneTitle">Resolved Tasks</h2>
+        <p data-i18n="emp.doneSub">Tasks you've completed and that have been verified. Keep up the great work!</p>
+      </div>
+    </div>
+    <div class="reports-grid" id="doneGrid"></div>
+  </div>
+</section>
+
+<!-- ── Footer ── -->
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="site-footer__grid">
+      <div class="site-footer__brand">
+        <a href="index.html" class="app-logo app-logo--light"><span class="app-logo__icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="4" r="2"/><path d="M7 6v5"/><path d="M7 11l-2.5 4"/><path d="M7 11l2.5 4"/><path d="M7 8.5l4-2"/><circle cx="12" cy="5" r="0.7" fill="#fff" stroke="none"/><circle cx="13.2" cy="6.5" r="0.5" fill="#fff" stroke="none"/><path d="M14 9h6v11a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 14 20V9z"/><path d="M13.5 9h7"/><path d="M16 6v3"/></svg></span><span class="app-logo__text">SwachhLens</span></a>
+        <p data-i18n="foot.desc2">AI-powered civic waste reporting and cleanup verification platform helping citizens and municipal teams build cleaner and smarter cities.</p>
+      </div>
+      <div><h4 data-i18n="foot.platform">Platform</h4><ul class="site-footer__links"><li><a href="about.html" data-i18n="foot.about">About SwachhLens</a></li><li><a href="index.html#system" data-i18n="foot.howIt">How It Works</a></li><li><a href="api-docs.html" data-i18n="foot.apiDocs">API Docs</a></li><li><a href="blog.html" data-i18n="foot.blog">Blog</a></li></ul></div>
+      <div><h4 data-i18n="foot.support">Support</h4><ul class="site-footer__links"><li><a href="help.html" data-i18n="foot.helpDesk">Help Desk</a></li><li><a href="faq.html" data-i18n="foot.faqs">FAQs</a></li><li><a href="contact.html" data-i18n="foot.contactUs">Contact Us</a></li></ul></div>
+      <div><h4 data-i18n="foot.legal">Legal</h4><ul class="site-footer__links"><li><a href="terms.html" data-i18n="foot.terms">Terms of Service</a></li><li><a href="privacy.html" data-i18n="foot.privacy">Privacy Policy</a></li></ul></div>
+    </div>
+    <div class="site-footer__bottom"><span class="site-footer__copy" data-i18n="foot.copy2">&copy; 2026 SwachhLens. Built for cleaner and smarter cities.</span></div>
+  </div>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script src="js/lang.js"></script>
+<script src="js/config.js"></script>
+<script src="js/api.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/state.js"></script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="js/employee.js"></script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+# SwachhLens Backend — Production Dependencies
+# FastAPI + SQLite/PostgreSQL + Auth
+
+# Core
+fastapi==0.141.1
+uvicorn==0.52.1
+python-dotenv==1.2.2
+python-multipart==0.0.32
+
+# Database
+sqlalchemy==2.0.51
+psycopg2-binary==2.9.12
+
+# Auth & Security
+email-validator==2.3.0
+
+# AI / Vision is OPTIONAL — real YOLO inference needs torch/ultralytics,
+# which live in requirements-ai.txt (they are heavy and slow Railway builds).
+# Without them POST /api/analyze degrades to the deterministic demo classifier.
+Pillow>=10.0.0
+
+# Utilities
+httptools==0.8.0
+watchfiles==1.2.0

@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>SwachhLens — A cleaner city starts with one report</title>
+<meta name="description" content="SwachhLens is a citizen-first waste-management platform for Indian municipalities. Report waste, dispatch the right crew, verify the cleanup — in one civic loop." />
+<link rel="stylesheet" href="css/landing.css" />
+<link rel="stylesheet" href="css/i18n.css" />
+<script>document.documentElement.classList.add('js');</script>
+</head>
+<body class="landing-page">
+<a class="lv-skip" href="#main" data-i18n="nav.skip">Skip to content</a>
+
+<!-- ================= NAVIGATION ================= -->
+<nav class="lv-nav" id="topnav" aria-label="Main navigation">
+  <div class="lv-wrap lv-nav__inner">
+    <a href="index.html" class="lv-logo">
+      <span class="lv-logo__mark" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="4" r="2"/><path d="M7 6v5"/><path d="M7 11l-2.5 4"/><path d="M7 11l2.5 4"/><path d="M7 8.5l4-2"/><circle cx="12" cy="5" r="0.7" fill="#fff" stroke="none"/><circle cx="13.2" cy="6.5" r="0.5" fill="#fff" stroke="none"/><path d="M14 9h6v11a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 14 20V9z"/><path d="M13.5 9h7"/><path d="M16 6v3"/></svg></span>
+      <span>SwachhLens</span>
+    </a>
+    <div class="lv-nav__cta">
+      <span data-lang-switch></span>
+      <button class="lv-btn" data-theme-btn title="Toggle light / dark mode" data-i18n-title="nav.theme">🌙</button>
+      <a class="lv-btn lv-btn--ghost" href="login.html" data-i18n="nav.login">Log in</a>
+      <a class="lv-btn lv-btn--primary" href="register.html" data-i18n="nav.register">Register</a>
+      <button class="lv-burger" data-menu-btn aria-label="Open menu" aria-expanded="false"><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<div class="lv-mobile-menu" data-mobile-menu>
+  <div class="lv-mobile-menu__brand">
+    <span class="lv-mobile-menu__logo">
+      <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#22c55e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="4" r="2"/><path d="M7 6v5"/><path d="M7 11l-2.5 4"/><path d="M7 11l2.5 4"/><path d="M7 8.5l4-2"/><circle cx="12" cy="5" r="0.7" fill="#22c55e" stroke="none"/><circle cx="13.2" cy="6.5" r="0.5" fill="#22c55e" stroke="none"/><path d="M14 9h6v11a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 14 20V9z"/><path d="M13.5 9h7"/><path d="M16 6v3"/></svg>
+    </span>
+    <span class="lv-mobile-menu__title">SwachhLens</span>
+  </div>
+  <a href="#system" class="lv-mobile-menu__link" data-i18n="nav.system">The system</a>
+  <a href="#roles" class="lv-mobile-menu__link" data-i18n="nav.chooseRole">Choose your role</a>
+  <div class="lv-mobile-menu__divider"></div>
+  <a href="login.html" class="lv-mobile-menu__link lv-mobile-menu__link--login" data-i18n="nav.login">Log in</a>
+  <a href="register.html" class="lv-mobile-menu__link lv-mobile-menu__link--register" data-i18n="nav.register">Register</a>
+  <div class="lv-mobile-menu__footer">
+    <p>🇮🇳 Built for Nagar Nigam</p>
+  </div>
+</div>
+
+<main id="main">
+
+<!-- ================= 01 — HERO ================= -->
+<section class="lv-hero" id="top">
+  <!-- Floating circular icons -->
+  <div class="lv-hero__float lv-hero__float--1" aria-hidden="true">📸</div>
+  <div class="lv-hero__float lv-hero__float--2" aria-hidden="true">📍</div>
+  <div class="lv-hero__float lv-hero__float--3" aria-hidden="true">🕐</div>
+  <div class="lv-hero__float lv-hero__float--4" aria-hidden="true">✅</div>
+
+  <div class="lv-wrap">
+    <div class="lv-hero__eyebrow lv-reveal in"><span class="dot"></span> <span data-i18n="hero.eyebrow">Nagar Nigam · Smart Sanitation</span></div>
+    <h1 class="lv-display lv-display--lg lv-reveal" style="--d:.1s" data-hero-type data-hero-phrase="A cleaner city starts with one report." data-hero-accent="report."><span data-hero-type-text></span><span data-hero-type-accent></span></h1>
+    <p class="lv-lead lv-reveal" style="--d:.2s" data-i18n="hero.lead">Spot an overflowing bin, an illegal dump, a missed pickup. Snap a photo, and SwachhLens routes it to the right cleaning crew — then verifies the job is actually done. One civic loop, from citizen to every street.</p>
+    <div class="lv-hero__actions lv-reveal" style="--d:.3s">
+      <a class="lv-btn lv-btn--primary lv-btn--lg" href="login.html" data-i18n="common.reportWaste">Report Waste <span class="lv-arr">→</span></a>
+      <a class="lv-btn lv-btn--ghost lv-btn--lg" href="#system" data-i18n="common.explore">Explore SwachhLens</a>
+    </div>
+    <div class="lv-hero__meta lv-reveal" style="--d:.4s">
+      <div><b>2×</b><span data-i18n="hero.metaRoles">roles in one civic loop</span></div>
+      <div><b>AI-first</b><span data-i18n="hero.metaAi">dispatch + verification</span></div>
+      <div><b>100%</b><span data-i18n="hero.metaFree">free for every city</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 02 — MARQUEE ================= -->
+<div class="lv-marquee" aria-hidden="true">
+  <div class="lv-marquee__track">
+    <span><span class="m-ico">🏙️</span> <span>Overfilled bins</span></span>
+    <span><span class="m-ico">🚨</span> <span>Illegal dumping</span></span>
+    <span><span class="m-ico">🪨</span> <span>Construction debris</span></span>
+    <span><span class="m-ico">💧</span> <span>Stagnant water</span></span>
+    <span><span class="m-ico">🛻</span> <span>Missed collection</span></span>
+    <span><span class="m-ico">📸</span> <span>One-photo reports</span></span>
+    <span><span class="m-ico">🤖</span> <span>AI-powered dispatch</span></span>
+    <span><span class="m-ico">♻️</span> <span>Verified cleanups</span></span>
+    <span><span class="m-ico">🏙️</span> <span>Overfilled bins</span></span>
+    <span><span class="m-ico">🚨</span> <span>Illegal dumping</span></span>
+    <span><span class="m-ico">🪨</span> <span>Construction debris</span></span>
+    <span><span class="m-ico">💧</span> <span>Stagnant water</span></span>
+    <span><span class="m-ico">🛻</span> <span>Missed collection</span></span>
+    <span><span class="m-ico">📸</span> <span>One-photo reports</span></span>
+    <span><span class="m-ico">🤖</span> <span>AI-powered dispatch</span></span>
+    <span><span class="m-ico">♻️</span> <span>Verified cleanups</span></span>
+  </div>
+</div>
+
+<!-- ================= 03 — PROBLEM vs SOLUTION ================= -->
+<section class="lv-section lv-comparison" id="system">
+  <div class="lv-wrap">
+    <div class="lv-sechead lv-sechead--center lv-reveal">
+      <span class="lv-kicker" data-i18n="land.compKicker">The Problem</span>
+      <h2 class="lv-display lv-display--md" data-i18n="land.compTitle">Current waste management is <span class="lv-em">broken.</span></h2>
+      <p class="lv-lead" data-i18n="land.compLead">Most Indian cities still run waste collection on phone calls, paper logs, and guesswork. Citizens have no way to report, no way to track, and no proof anything was done.</p>
+    </div>
+    <div class="lv-comparison__grid lv-stagger" style="position:relative;">
+      <div class="lv-comparison__vs">VS</div>
+      <div class="lv-comparison__card lv-comparison--before" style="--d:.0s">
+        <div class="lv-comparison__label" data-i18n="land.compBefore">Before</div>
+        <ul class="lv-comparison__list">
+          <li><span class="ico">📞</span><div class="text"><b data-i18n="land.compB1">Phone-call reporting</b><small data-i18n="land.compB1s">No photo proof, no tracking</small></div></li>
+          <li><span class="ico">📋</span><div class="text"><b data-i18n="land.compB2">Paper-based logs</b><small data-i18n="land.compB2s">Data is lost or never entered</small></div></li>
+          <li><span class="ico">⚠️</span><div class="text"><b data-i18n="land.compB3">No verification</b><small data-i18n="land.compB3s">Jobs marked done without proof</small></div></li>
+          <li><span class="ico">🔇</span><div class="text"><b data-i18n="land.compB4">Zero visibility</b><small data-i18n="land.compB4s">Citizens never learn the outcome</small></div></li>
+        </ul>
+      </div>
+      <div class="lv-comparison__card lv-comparison--after" style="--d:.12s">
+        <div class="lv-comparison__label" data-i18n="land.compAfter">With SwachhLens</div>
+        <ul class="lv-comparison__list">
+          <li><span class="ico">📸</span><div class="text"><b data-i18n="land.compA1">One-photo reporting</b><small data-i18n="land.compA1s">Snap, auto-tag, done in 10 seconds</small></div></li>
+          <li><span class="ico">🤖</span><div class="text"><b data-i18n="land.compA2">AI-powered dispatch</b><small data-i18n="land.compA2s">Right crew matched automatically</small></div></li>
+          <li><span class="ico">✅</span><div class="text"><b data-i18n="land.compA3">Verified cleanups</b><small data-i18n="land.compA3s">Before/after proof, lead approval</small></div></li>
+          <li><span class="ico">👁️</span><div class="text"><b data-i18n="land.compA4">Full transparency</b><small data-i18n="land.compA4s">Track every step — report to resolution</small></div></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 04 — WORKFLOW PIPELINE ================= -->
+<section class="lv-section lv-pipeline">
+  <div class="lv-wrap">
+    <div class="lv-sechead lv-sechead--center lv-reveal">
+      <span class="lv-kicker" data-i18n="sys.kicker">SwachhLens</span>
+      <h2 class="lv-display lv-display--md" data-i18n="sys.title">One verified loop, end to end.</h2>
+      <p class="lv-lead" data-i18n="sys.lead">Every report enters a single pipeline — from the citizen's photo to a verified, logged cleanup. Nothing falls through because every step has an owner.</p>
+    </div>
+    <div class="lv-pipeline__rail lv-stagger" style="position:relative;">
+      <div class="lv-pipeline__connector" aria-hidden="true"></div>
+      <div class="lv-pipeline__step" style="--d:.0s"><div class="pv-ico">👤</div><b data-i18n="sys.s1">Citizen</b><small data-i18n="sys.s1s">Reports or books a pickup</small></div>
+      <div class="lv-pipeline__step" style="--d:.05s"><div class="pv-ico">🗑️</div><b data-i18n="sys.s2">Waste report</b><small data-i18n="sys.s2s">Photo + location + priority</small></div>
+      <div class="lv-pipeline__step" style="--d:.1s"><div class="pv-ico">🤖</div><b data-i18n="sys.s3">AI prioritisation</b><small data-i18n="sys.s3s">Right group + crew matched</small></div>
+      <div class="lv-pipeline__step" style="--d:.15s"><div class="pv-ico">🚚</div><b data-i18n="sys.s4">Municipal dispatch</b><small data-i18n="sys.s4s">Approved into an area group</small></div>
+      <div class="lv-pipeline__step" style="--d:.2s"><div class="pv-ico">🧹</div><b data-i18n="sys.s5">Cleaning crew</b><small data-i18n="sys.s5s">Clears and uploads proof</small></div>
+      <div class="lv-pipeline__step" style="--d:.25s"><div class="pv-ico">✅</div><b data-i18n="sys.s6">Verified clean</b><small data-i18n="sys.s6s">Resolved, city-wide visible</small></div>
+    </div>
+    <div class="lv-pipeline__note lv-reveal">
+      <span>🔒</span> <span data-i18n="sys.note">Dispatches are AI-suggested but approved by a group lead — and every finished job is checked before it's marked resolved.</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 05 — IMPACT STATISTICS ================= -->
+<section class="lv-section lv-impact">
+  <div class="lv-wrap">
+    <div class="lv-sechead lv-sechead--center lv-reveal">
+      <span class="lv-kicker" data-i18n="land.impKicker">Live Impact</span>
+      <h2 class="lv-display lv-display--md" data-i18n="land.impTitle">Numbers that matter.</h2>
+      <p class="lv-lead" data-i18n="land.impSub">Real data from active wards across the city. Tap any stat to learn more.</p>
+    </div>
+    <div class="lv-impact__grid lv-stagger">
+      <div class="lv-impact__stat" style="--d:.0s">
+        <div class="is-ico">📸</div>
+        <div class="is-no" data-count="0" id="impactReports">0</div>
+        <span class="is-step" data-i18n="land.impReports">Reports submitted</span>
+        <p id="impactWardsSub">Across 0 wards</p>
+      </div>
+      <div class="lv-impact__stat" style="--d:.07s">
+        <div class="is-ico">✅</div>
+        <div class="is-no" data-count="0" id="impactVerified">0</div>
+        <span class="is-step" data-i18n="land.impVerified">Verified cleanups</span>
+        <p id="impactRateSub">0% resolution rate</p>
+      </div>
+      <div class="lv-impact__stat" style="--d:.14s">
+        <div class="is-ico">👥</div>
+        <div class="is-no" data-count="0" id="impactCrew">0</div>
+        <span class="is-step" data-i18n="land.impCrew">Active crew members</span>
+        <p data-i18n="land.impCrewSub">On duty right now</p>
+      </div>
+      <div class="lv-impact__stat" style="--d:.21s">
+        <div class="is-ico">🕐</div>
+        <div class="is-no" id="impactResp">—</div>
+        <span class="is-step" data-i18n="land.impResp">Avg response time</span>
+        <p data-i18n="land.impRespSub">From report to dispatch</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 06 — TWO ROLES ================= -->
+<section class="lv-section lv-roles" id="roles">
+  <div class="lv-wrap">
+    <div class="lv-sechead lv-sechead--center lv-reveal">
+      <span class="lv-kicker" data-i18n="roles.kicker">For You</span>
+      <h2 class="lv-display lv-display--md" data-i18n="roles.title">Two roles, one cleaner city.</h2>
+      <p class="lv-lead" data-i18n="roles.lead">Pick where you sit in the loop. Each role has its own dashboard, its own workflow, and its own proof trail.</p>
+    </div>
+    <div class="lv-roles__grid lv-stagger">
+      <div class="lv-role-card lv-role-card--citizen" style="--d:.0s">
+        <div class="lv-role-card__tags">
+          <span class="lv-role-card__tag lv-role-card__tag--new" data-i18n="roles.tagNew">New</span>
+          <span class="lv-role-card__tag lv-role-card__tag--role" data-i18n="roles.tagCit">For citizens</span>
+        </div>
+        <h3 data-i18n="roles.titleCit">SwachhLens Citizen</h3>
+        <p data-i18n="roles.cardCitBody">Report waste in seconds with a photo, book a pickup, and watch your report move through the system — with real-time updates the whole way.</p>
+        <div class="lv-role-card__replaces">
+          <span data-i18n="roles.replaces">Replaces</span>
+          <span class="pill" data-i18n="roles.pillCit1">Phone-call helplines</span>
+          <span class="pill" data-i18n="roles.pillCit2">Paper forms</span>
+          <span class="pill" data-i18n="roles.pillCit3">WhatsApp groups</span>
+        </div>
+        <ul class="lv-role-card__features">
+          <li data-i18n="roles.featCit1"><span class="ico">📸</span> Snap a photo — auto-tagged</li>
+          <li data-i18n="roles.featCit2"><span class="ico">🚚</span> Instant crew dispatch</li>
+          <li class="verified" data-i18n="roles.featCit3"><span class="ico">✅</span> Verified clean ✓</li>
+        </ul>
+        <div class="lv-role-card__cta">
+          <a class="lv-btn lv-btn--primary" href="login.html#citizen" data-i18n="common.reportWaste">Report Waste <span class="lv-arr">→</span></a>
+        </div>
+      </div>
+      <div class="lv-role-card lv-role-card--employee" style="--d:.06s">
+        <div class="lv-role-card__tags">
+          <span class="lv-role-card__tag lv-role-card__tag--new" data-i18n="roles.tagNew">New</span>
+          <span class="lv-role-card__tag lv-role-card__tag--role" data-i18n="roles.tagEmp">For crew</span>
+        </div>
+        <h3 data-i18n="roles.titleEmp">SwachhLens Employee</h3>
+        <p data-i18n="roles.cardEmpBody">Your zone's tasks land in one queue. Clear pickups along your route, upload proof of work, and get each job verified by your group lead.</p>
+        <div class="lv-role-card__replaces">
+          <span data-i18n="roles.replaces">Replaces</span>
+          <span class="pill" data-i18n="roles.pillEmp1">Paper route sheets</span>
+          <span class="pill" data-i18n="roles.pillEmp2">Verbal assignments</span>
+          <span class="pill" data-i18n="roles.pillEmp3">Manual tracking</span>
+        </div>
+        <ul class="lv-role-card__features">
+          <li data-i18n="roles.featEmp1"><span class="ico">📋</span> Zone queue — 12 tasks</li>
+          <li data-i18n="roles.featEmp2"><span class="ico">🗺️</span> Optimised route — 5 stops</li>
+          <li class="verified" data-i18n="roles.featEmp3"><span class="ico">✅</span> Lead verified ✓</li>
+        </ul>
+        <div class="lv-role-card__cta">
+          <a class="lv-btn lv-btn--purple" href="login.html#employee" data-i18n="roles.cardEmpCta">Work Your Zone <span class="lv-arr">→</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 07 — TESTIMONIALS ================= -->
+<section class="lv-section lv-section--green">
+  <div class="lv-wrap">
+    <div class="lv-sechead lv-sechead--center lv-reveal">
+      <span class="lv-kicker" data-i18n="imp.kicker">Real-World Impact</span>
+      <h2 class="lv-display lv-display--md" data-i18n="imp.title">Real people. <span class="lv-em">Real impact.</span></h2>
+      <p class="lv-lead" data-i18n="imp.lead">See how SwachhLens turns citizen reports into measurable action.</p>
+    </div>
+    <div class="lv-quotes lv-stagger">
+      <figure class="lv-quote" style="--d:.0s">
+        <blockquote data-i18n="imp.q1">I reported a spill at the bus stop with one photo. Two days later it was gone and marked verified — I could actually see the result.</blockquote>
+        <footer>
+          <span class="q-av" style="background:linear-gradient(135deg,#22c55e,#16a34a);">A</span>
+          <div><b data-i18n="imp.q1name">Aarav Sharma</b><small data-i18n="imp.q1meta">Citizen · North Zone</small></div>
+        </footer>
+      </figure>
+      <figure class="lv-quote" style="--d:.12s">
+        <blockquote data-i18n="imp.q2">My daily queue used to be guesswork. Now the AI lines up my routes and my lead verifies each one — my work finally has proof.</blockquote>
+        <footer>
+          <span class="q-av" style="background:linear-gradient(135deg,#a855f7,#9333ea);">J</span>
+          <div><b data-i18n="imp.q2name">John Driver</b><small data-i18n="imp.q2meta">Cleaning Crew · East Zone</small></div>
+        </footer>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 08 — FAQ ================= -->
+<section class="lv-section lv-faq">
+  <div class="lv-wrap">
+    <div class="lv-sechead lv-sechead--center lv-reveal">
+      <h2 class="lv-display lv-display--md" data-i18n="land.faqTitle">Questions &amp; answers.</h2>
+    </div>
+    <div class="lv-faq__list lv-stagger">
+      <div class="lv-faq__item" style="--d:.0s">
+        <button class="lv-faq__q" aria-expanded="false" data-i18n="land.faq1q">Is SwachhLens really free for citizens?</button>
+        <div class="lv-faq__a"><div class="lv-faq__a-inner" data-i18n="land.faq1a">Yes, SwachhLens is 100% free for citizens. There are no fees, subscriptions, or hidden charges. The platform is built for municipal use and funded by the city — citizens simply download, register, and start reporting waste in their area.</div></div>
+      </div>
+      <div class="lv-faq__item" style="--d:.04s">
+        <button class="lv-faq__q" aria-expanded="false" data-i18n="land.faq2q">How does the AI dispatch work?</button>
+        <div class="lv-faq__a"><div class="lv-faq__a-inner" data-i18n="land.faq2a">When a citizen submits a report, the AI analyses the location, waste type, and severity to suggest the best area group and crew member. A group lead then reviews and approves (or overrides) the assignment. This ensures the right team handles the right job — fast.</div></div>
+      </div>
+      <div class="lv-faq__item" style="--d:.08s">
+        <button class="lv-faq__q" aria-expanded="false" data-i18n="land.faq3q">Can I track my report after submitting?</button>
+        <div class="lv-faq__a"><div class="lv-faq__a-inner" data-i18n="land.faq3a">Absolutely. Every report moves through a transparent pipeline: PENDING → IN_PROGRESS → VERIFY → RESOLVED. You'll see real-time status updates on your dashboard as the crew is dispatched, arrives, and completes the cleanup.</div></div>
+      </div>
+      <div class="lv-faq__item" style="--d:.12s">
+        <button class="lv-faq__q" aria-expanded="false" data-i18n="land.faq4q">What proof do crews upload?</button>
+        <div class="lv-faq__a"><div class="lv-faq__a-inner" data-i18n="land.faq4a">Crews upload a photo of the cleaned area when they mark a job as collected. This photo, along with location data, is reviewed by the group lead before the report is marked as RESOLVED. This verification step ensures quality and accountability.</div></div>
+      </div>
+      <div class="lv-faq__item" style="--d:.16s">
+        <button class="lv-faq__q" aria-expanded="false" data-i18n="land.faq5q">Which cities can use SwachhLens?</button>
+        <div class="lv-faq__a"><div class="lv-faq__a-inner" data-i18n="land.faq5a">SwachhLens is designed for Indian municipal corporations (Nagar Nigam). It can be deployed in any city with a waste management crew structure. The system is configurable for different ward boundaries, crew sizes, and area group layouts.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 09 — FINAL CTA ================= -->
+<section class="lv-section lv-cta">
+  <div class="lv-cta__orbs"><i></i><i></i></div>
+  <div class="lv-wrap">
+    <div class="lv-cta__inner lv-reveal">
+      <span class="lv-kicker" data-i18n="cta.kicker">Start Today</span>
+      <h2 class="lv-display lv-display--md" data-i18n="cta.title">Make every report count.</h2>
+      <p class="lv-lead" data-i18n="cta.lead">Choose the seat you belong in and step into the loop. Free for citizens, crews and municipalities.</p>
+      <div class="lv-cta__actions">
+        <a class="lv-btn lv-btn--primary lv-btn--lg" href="login.html" data-i18n="common.reportWaste">Report Waste <span class="lv-arr">→</span></a>
+        <a class="lv-btn lv-btn--ghost lv-btn--lg" href="register.html" data-i18n="nav.register">Register</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 10 — FOOTER ================= -->
+<footer class="lv-footer">
+  <div class="lv-wrap">
+    <div class="lv-footer__grid">
+      <div class="lv-footer__brand">
+        <a href="index.html" class="lv-logo"><span class="lv-logo__mark"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="4" r="2"/><path d="M7 6v5"/><path d="M7 11l-2.5 4"/><path d="M7 11l2.5 4"/><path d="M7 8.5l4-2"/><circle cx="12" cy="5" r="0.7" fill="#fff" stroke="none"/><circle cx="13.2" cy="6.5" r="0.5" fill="#fff" stroke="none"/><path d="M14 9h6v11a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 14 20V9z"/><path d="M13.5 9h7"/><path d="M16 6v3"/></svg></span> SwachhLens</a>
+        <p data-i18n="foot.desc">One civic loop for Indian cities: citizens report, crews clear, group leads verify — and no bin stays full.</p>
+        <div class="lv-footer__badges"><span data-i18n="foot.badge1">🇮🇳 Built for Nagar Nigam</span><span data-i18n="foot.badge2">♻️ Municipal sanitation</span></div>
+      </div>
+      <div>
+        <h4 data-i18n="foot.platform">Platform</h4>
+        <a href="#system" data-i18n="foot.how">How it works</a>
+      </div>
+      <div>
+        <h4 data-i18n="foot.foryou">For You</h4>
+        <a href="login.html#citizen" data-i18n="foot.citizens">For Citizens</a>
+        <a href="login.html#employee" data-i18n="foot.employees">For Employees</a>
+      </div>
+      <div>
+        <h4 data-i18n="foot.getstarted">Get Started</h4>
+        <a href="login.html" data-i18n="nav.login">Log in</a>
+        <a href="login.html" data-i18n="common.reportWaste">Report Waste</a>
+        <a href="#top" data-i18n="foot.top">Back to top ↑</a>
+      </div>
+    </div>
+    <div class="lv-footer__bottom">
+      <span data-i18n="foot.copyright">© 2026 SwachhLens · Built with 💚 for cleaner Indian cities.</span>
+      <span>support@swachhlens.app</span>
+    </div>
+  </div>
+</footer>
+
+</main>
+
+<script src="js/lang.js"></script>
+<script src="js/config.js"></script>
+<script src="js/api.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/state.js"></script>
+<script src="js/hero-type.js"></script>
+<script src="js/landing.js"></script>
+</body>
+</html>

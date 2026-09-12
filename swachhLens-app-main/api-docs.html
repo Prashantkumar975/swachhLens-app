@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>API Documentation — SwachhLens</title>
+<meta name="description" content="SwachhLens REST API documentation for authentication, waste reports, AI analysis, and more." />
+<link rel="stylesheet" href="css/landing.css" />
+<link rel="stylesheet" href="css/info.css" />
+</head>
+<body class="landing-page">
+<nav class="info-nav">
+  <div class="wrap">
+    <a href="index.html" class="app-logo">
+      <span class="app-logo__icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="4" r="2"/><path d="M7 6v5"/><path d="M7 11l-2.5 4"/><path d="M7 11l2.5 4"/><path d="M7 8.5l4-2"/><circle cx="12" cy="5" r="0.7" fill="#fff" stroke="none"/><circle cx="13.2" cy="6.5" r="0.5" fill="#fff" stroke="none"/><path d="M14 9h6v11a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 14 20V9z"/><path d="M13.5 9h7"/><path d="M16 6v3"/></svg></span>
+      <span>SwachhLens</span>
+    </a>
+    <div class="info-nav__links">
+      <a href="about.html">About</a>
+      <a href="faq.html">FAQs</a>
+      <a href="help.html">Help</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="info-nav__cta">
+      <a class="btn btn-ghost btn-small" href="login.html">Log in</a>
+      <a class="btn btn-primary btn-small" href="register.html">Register</a>
+    </div>
+  </div>
+</nav>
+<section class="info-hero"><div class="wrap"><h1>API <span class="em">Documentation</span></h1><p>REST API endpoints for the SwachhLens backend. Base URL: <code style="background:rgba(255,255,255,.1);padding:4px 10px;border-radius:6px;font-size:14px;">/api</code></p></div></section>
+<section class="info-section"><div class="wrap">
+
+<h2>Authentication</h2>
+<p>All protected endpoints require a JWT token in the <code>Authorization: Bearer &lt;token&gt;</code> header.</p>
+
+<div class="api-endpoint"><span class="api-method post">POST</span><span class="api-path">/api/auth/register</span><div class="api-desc">Register a new user account.</div><div class="api-desc"><strong>Body:</strong> { name, email, password, role: "citizen"|"employee" }</div><div class="api-desc"><strong>Returns:</strong> 201 Created</div></div>
+
+<div class="api-endpoint"><span class="api-method post">POST</span><span class="api-path">/api/auth/login</span><div class="api-desc">Log in and receive a JWT token.</div><div class="api-desc"><strong>Body:</strong> { email, password }</div><div class="api-desc"><strong>Returns:</strong> { access_token, token_type, user: { id, name, email, role } }</div></div>
+
+<div class="api-endpoint"><span class="api-method post">POST</span><span class="api-path">/api/auth/logout</span><div class="api-desc">Log out the current user.</div><div class="api-desc"><strong>Auth:</strong> Required</div></div>
+
+<div class="api-endpoint"><span class="api-method get">GET</span><span class="api-path">/api/auth/me</span><div class="api-desc">Get current user profile.</div><div class="api-desc"><strong>Auth:</strong> Required</div><div class="api-desc"><strong>Returns:</strong> { id, name, email, role }</div></div>
+
+<h2>Waste Reports</h2>
+
+<div class="api-endpoint"><span class="api-method get">GET</span><span class="api-path">/api/reports</span><div class="api-desc">List all reports for the current user.</div><div class="api-desc"><strong>Auth:</strong> Required</div></div>
+
+<div class="api-endpoint"><span class="api-method get">GET</span><span class="api-path">/api/reports/stats</span><div class="api-desc">Get report statistics (resolved, active, on-time).</div><div class="api-desc"><strong>Auth:</strong> Required</div></div>
+
+<div class="api-endpoint"><span class="api-method post">POST</span><span class="api-path">/api/reports</span><div class="api-desc">Submit a new waste report with photo and location.</div><div class="api-desc"><strong>Auth:</strong> Required</div><div class="api-desc"><strong>Body:</strong> multipart/form-data { location, description, lat, lng, photo }</div></div>
+
+<div class="api-endpoint"><span class="api-method patch">PATCH</span><span class="api-path">/api/reports/{report_id}/assign</span><div class="api-desc">Assign a report to a crew member (group lead only).</div><div class="api-desc"><strong>Auth:</strong> Required (group lead)</div></div>
+
+<div class="api-endpoint"><span class="api-method patch">PATCH</span><span class="api-path">/api/reports/{report_id}/collect</span><div class="api-desc">Mark a report as collected by a crew member.</div><div class="api-desc"><strong>Auth:</strong> Required (employee)</div></div>
+
+<div class="api-endpoint"><span class="api-method patch">PATCH</span><span class="api-path">/api/reports/{report_id}/verify</span><div class="api-desc">Verify a completed cleanup (group lead only).</div><div class="api-desc"><strong>Auth:</strong> Required (group lead)</div></div>
+
+<div class="api-endpoint"><span class="api-method patch">PATCH</span><span class="api-path">/api/reports/{report_id}/cancel</span><div class="api-desc">Cancel a pending report (citizen only).</div><div class="api-desc"><strong>Auth:</strong> Required (citizen)</div></div>
+
+<div class="api-endpoint"><span class="api-method delete">DELETE</span><span class="api-path">/api/reports/{report_id}</span><div class="api-desc">Permanently delete a report.</div><div class="api-desc"><strong>Auth:</strong> Required</div></div>
+
+<h2>AI Waste Analysis</h2>
+
+<div class="api-endpoint"><span class="api-method post">POST</span><span class="api-path">/api/analyze</span><div class="api-desc">Upload a photo for AI waste classification and severity analysis.</div><div class="api-desc"><strong>Auth:</strong> Required</div><div class="api-desc"><strong>Body:</strong> multipart/form-data { photo }</div><div class="api-desc"><strong>Returns:</strong> { waste_type, severity, confidence, summary }</div></div>
+
+<h2>GIS & Bin Monitoring</h2>
+
+<div class="api-endpoint"><span class="api-method get">GET</span><span class="api-path">/api/gis</span><div class="api-desc">Get bin locations and fill levels for the map view.</div><div class="api-desc"><strong>Auth:</strong> Required</div></div>
+
+<div class="api-endpoint"><span class="api-method patch">PATCH</span><span class="api-path">/api/gis/bins/{bin_id}</span><div class="api-desc">Update a bin's fill level or status.</div><div class="api-desc"><strong>Auth:</strong> Required (employee)</div></div>
+
+<h2>Community</h2>
+
+<div class="api-endpoint"><span class="api-method get">GET</span><span class="api-path">/api/community/leaderboard</span><div class="api-desc">Get the community leaderboard ranked by verified reports and points.</div><div class="api-desc"><strong>Auth:</strong> Required</div></div>
+
+<h2>Admin Tasks</h2>
+
+<div class="api-endpoint"><span class="api-method post">POST</span><span class="api-path">/api/admin/login</span><div class="api-desc">Admin/Employee login with agency-issued credentials.</div><div class="api-desc"><strong>Body:</strong> { email, password }</div></div>
+
+<div class="api-endpoint"><span class="api-method get">GET</span><span class="api-path">/api/admin/tasks</span><div class="api-desc">Get all tasks for the admin view.</div><div class="api-desc"><strong>Auth:</strong> Required (admin/employee)</div></div>
+
+<div class="api-endpoint"><span class="api-method post">POST</span><span class="api-path">/api/admin/tasks</span><div class="api-desc">Create a new task manually.</div><div class="api-desc"><strong>Auth:</strong> Required (admin)</div></div>
+
+<div class="api-endpoint"><span class="api-method get">GET</span><span class="api-path">/api/admin/employees</span><div class="api-desc">List all employees for assignment purposes.</div><div class="api-desc"><strong>Auth:</strong> Required (admin/lead)</div></div>
+
+<div class="api-endpoint"><span class="api-method get">GET</span><span class="api-path">/api/admin/reports</span><div class="api-desc">Get all reports for admin oversight.</div><div class="api-desc"><strong>Auth:</strong> Required (admin)</div></div>
+
+<div class="api-endpoint"><span class="api-method get">GET</span><span class="api-path">/api/admin/employee-tasks</span><div class="api-desc">Get tasks assigned to the current employee.</div><div class="api-desc"><strong>Auth:</strong> Required (employee)</div></div>
+
+<h2>Constants</h2>
+
+<div class="api-endpoint"><span class="api-method get">GET</span><span class="api-path">/api/constants</span><div class="api-desc">Get platform constants (waste types, statuses, severity levels).</div><div class="api-desc"><strong>Auth:</strong> Not required</div></div>
+
+<h2>Notes</h2>
+<ul>
+<li>All endpoints return JSON responses.</li>
+<li>Protected endpoints require <code>Authorization: Bearer &lt;jwt_token&gt;</code> header.</li>
+<li>The API uses a FastAPI backend with SQLite database.</li>
+<li>Photo uploads use multipart/form-data encoding.</li>
+<li>Error responses include a <code>detail</code> field with the error message.</li>
+</ul>
+</div></section>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="site-footer__grid">
+      <div class="site-footer__brand">
+        <a href="index.html" class="app-logo">
+          <span class="app-logo__icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="4" r="2"/><path d="M7 6v5"/><path d="M7 11l-2.5 4"/><path d="M7 11l2.5 4"/><path d="M7 8.5l4-2"/><circle cx="12" cy="5" r="0.7" fill="#fff" stroke="none"/><circle cx="13.2" cy="6.5" r="0.5" fill="#fff" stroke="none"/><path d="M14 9h6v11a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 14 20V9z"/><path d="M13.5 9h7"/><path d="M16 6v3"/></svg></span>
+          <span>SwachhLens</span>
+        </a>
+        <p>AI-powered civic waste reporting and cleanup verification platform helping citizens and municipal teams build cleaner and smarter cities.</p>
+      </div>
+      <div>
+        <h4>Platform</h4>
+        <ul class="site-footer__links">
+          <li><a href="about.html">About SwachhLens</a></li>
+          <li><a href="index.html#system">How It Works</a></li>
+          <li><a href="api-docs.html">API Docs</a></li>
+          <li><a href="blog.html">Blog</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Support</h4>
+        <ul class="site-footer__links">
+          <li><a href="help.html">Help Desk</a></li>
+          <li><a href="faq.html">FAQs</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <ul class="site-footer__links">
+          <li><a href="terms.html">Terms of Service</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="site-footer__bottom">
+      <span class="site-footer__copy">&copy; 2026 SwachhLens. Built for cleaner and smarter cities.</span>
+    </div>
+  </div>
+</footer>
+<script src="js/lang.js"></script>
+</body></html>
