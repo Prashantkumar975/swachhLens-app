@@ -481,9 +481,11 @@ def _migrate() -> None:
             execute("ALTER TABLE reports ADD COLUMN proof_photo TEXT")
 
     # Fix NULL ids in admin_users table (old seed data)
-    rows = query("SELECT rowid, user_id FROM admin_users WHERE id IS NULL")
-    for r in rows:
-        execute("UPDATE admin_users SET id = ? WHERE rowid = ?", (r["user_id"], r["rowid"]))
+        # Fix NULL ids in admin_users table (old seed data)
+    if not _is_postgres:
+        rows = query("SELECT rowid, user_id FROM admin_users WHERE id IS NULL")
+        for r in rows:
+            execute("UPDATE admin_users SET id = ? WHERE rowid = ?", (r["user_id"], r["rowid"]))
 
     # Ensure phone column exists on users table
     if _is_postgres:
