@@ -11,7 +11,7 @@
  * ===================================================================== */
 (function () {
   // Railway backend URL — update this after deploying backend
-  var PRODUCTION_API_URL = 'https://swachhlens-production-e91c.up.railway.app/api';
+var PRODUCTION_API_URL = 'https://loving-light-production-c72d.up.railway.app/api';
   window.SW_CONFIG = window.SW_CONFIG || {};
   window.SW_CONFIG.APP_NAME = 'SwachhLens';
   window.SW_CONFIG.TICKER = 'Smart Waste Management';
