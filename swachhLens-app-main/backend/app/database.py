@@ -163,10 +163,7 @@ CREATE TABLE IF NOT EXISTS users (
     created_at    BIGINT NOT NULL
 );
 CREATE UNIQUE INDEX IF NOT EXISTS idx_users_email ON users(email) WHERE email IS NOT NULL AND email != '';
-DO $$ BEGIN
-    ALTER TABLE users ADD CONSTRAINT uq_users_email UNIQUE (email);
-EXCEPTION WHEN duplicate_object THEN NULL;
-END $$;
+
 
 CREATE TABLE IF NOT EXISTS otp_requests (
     id          BIGSERIAL PRIMARY KEY,
