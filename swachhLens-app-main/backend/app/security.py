@@ -22,7 +22,7 @@ SCRYPT_N = 2 ** 14
 SCRYPT_R = 8
 SCRYPT_P = 1
 SCRYPT_DKLEN = 64
-SCRYPT_MAXMEM = 2 ** 27  # 128 MiB
+SCRYPT_MAXMEM = 2 ** 25  # 32 MiB
 
 
 def sha256_short(value: str) -> str:
