@@ -68,16 +68,9 @@ def register(body: RegisterRequest):
     }
     execute(
         "INSERT INTO users (id, email, phone, password_hash, name, role, created_at)"
-        " VALUES (:id, :email, :phone, :password_hash, :name, :role, :created_at)",
-        {
-            "id": user["id"],
-            "email": user["email"],
-            "phone": user["phone"],
-            "password_hash": user["password_hash"],
-            "name": user["name"],
-            "role": user["role"],
-            "created_at": user["created_at"],
-        },
+        " VALUES (?, ?, ?, ?, ?, ?, ?)",
+        (user["id"], user["email"], user["phone"], user["password_hash"],
+         user["name"], user["role"], user["created_at"]),
     )
     return {"user": _user_public(user), "token": security.create_token(user)}
 
@@ -165,8 +158,9 @@ def register_otp(body: RegisterOtpRequest):
         }
         execute(
             "INSERT INTO users (id, email, phone, password_hash, name, role, verified, created_at)"
-            " VALUES (:id, :email, :phone, :password_hash, :name, :role, :verified, :created_at)",
-            user,
+            " VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+            (user["id"], user["email"], user["phone"], user["password_hash"],
+             user["name"], user["role"], user["verified"], user["created_at"]),
         )
         user_id = user["id"]
 
